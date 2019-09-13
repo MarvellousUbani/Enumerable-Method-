@@ -13,11 +13,11 @@ module Enumerable
   end
 
   def my_select
-    newArr = []
+    new_arr = []
     for i in 0...self.size
-      newArr << self[i] if yield(self[i]) == true
+      new_arr << self[i] if yield(self[i]) == true
     end
-    return newArr
+    return new_arr
   end
 
   def my_all
@@ -45,11 +45,11 @@ module Enumerable
   end
 
   def my_map(&block)
-    newArr = []
+    new_arr = []
     for i in 0...self.size
-      newArr << block.call(self[i])
+      new_arr << block.call(self[i])
     end
-    return newArr
+    return new_arr
   end
 
   def my_inject
