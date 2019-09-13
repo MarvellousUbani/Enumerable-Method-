@@ -1,4 +1,4 @@
-# Enumerable-Methods-
+# Enumerable Methods
 =====================
 
 #### Creating specified enumerable methods
@@ -18,4 +18,4 @@ multiply_els (function testing the map)
 Author
 ======
 
-[Mike](https://github.com/MarvellousUbani)
+[@Mike](https://github.com/MarvellousUbani)
