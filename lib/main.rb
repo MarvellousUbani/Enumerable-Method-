@@ -71,14 +71,13 @@ module Enumerable
     final = self[0]
     i = 0
     while i < size
-      final = yield(final,self[i])
+      final = yield(final, self[i])
       i += 1
     end
     final
   end
-
 end
 
 def multiply_els(arr)
-  arr.my_inject{|total, multiple| total * multiple}
+  arr.my_inject{ | total, multiple | total * multiple}
 end
