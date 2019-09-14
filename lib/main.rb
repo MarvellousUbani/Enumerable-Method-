@@ -3,8 +3,10 @@
 
 module Enumerable
   def my_each
-    for i in 0...size
+    i = 0
+    while i < size
       yield(self[i])
+      i += 1
     end
   end
 
@@ -68,4 +70,7 @@ def multiply_els(arr)
   arr.my_inject{|total, multiple| total * multiple}
 end
 
+[1,2,3].my_each do |num| 
+  puts num
+end
 
