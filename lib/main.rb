@@ -79,7 +79,7 @@ module Enumerable
 end
 
 def multiply_els(arr)
-  arr.my_inject do |total, multiple| 
-    total * multiple 
+  arr.my_inject do |total, multiple|
+    total * multiple
   end
 end
