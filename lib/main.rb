@@ -24,7 +24,7 @@ module Enumerable
       new_arr << self[i] if yield(self[i]) == true
       i += 1
     end
-    return new_arr
+    new_arr
   end
 
   def my_all
@@ -54,7 +54,7 @@ module Enumerable
       count +=1 if yield(self[i]== true)
       i += 1
     end
-    return count
+    count
   end
 
   def my_map(&block)
@@ -64,7 +64,7 @@ module Enumerable
       new_arr << block.call(self[i])
       i += 1
     end
-    return new_arr
+    new_arr
   end
 
   def my_inject
@@ -74,7 +74,7 @@ module Enumerable
       final = yield(final,self[i])
       i += 1
     end
-    return final
+    final
   end
 
 end
