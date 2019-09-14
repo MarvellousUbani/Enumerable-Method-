@@ -3,7 +3,7 @@ linters:
     display_cop_names: true
     fixer: true
 fixers:
-    enable: true
+    enable: false
 files:
   ignore:
     - "bin/*"
