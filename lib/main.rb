@@ -1,67 +1,71 @@
 # frozen_string_literal: true
 
+
 module Enumerable
   def my_each
-    (0...size).each do |i|
+    for i in 0...self.size
       yield(self[i])
     end
   end
 
   def my_each_with_index
-    (0...size).each do |i|
+    for i in 0...self.size
       yield(self[i], i)
     end
   end
 
   def my_select
-    newArr = []
-    (0...size).each do |i|
-      newArr << self[i] if yield(self[i]) == true
+    new_arr = []
+    for i in 0...self.size
+      new_arr << self[i] if yield(self[i]) == true
     end
-    newArr
+    return new_arr
   end
 
   def my_all
     pos = 0
-    (0...size).each do |i|
+    for i in 0...self.size
       pos += 1 if yield(self[i]) == true
     end
-    pos == size
+    pos == self.size
   end
 
   def my_none
     pos = 0
-    (0...size).each do |i|
+    for i in 0...self.size
       pos += 1 if yield(self[i]) == false
     end
-    pos == size
+    pos == self.size
   end
 
   def my_count
     count = 0
-    (0...size).each do |i|
-      count += 1 if yield(self[i] == true)
+    for i in 0...self.size
+      count +=1 if yield(self[i]== true)
     end
-    count
+    return count
   end
 
   def my_map(&block)
-    newArr = []
-    (0...size).each do |i|
-      newArr << block.call(self[i])
+    new_arr = []
+    for i in 0...self.size
+      new_arr << block.call(self[i])
     end
-    newArr
+    return new_arr
   end
 
   def my_inject
     final = self[0]
-    (1...size).each do |i|
-      final = yield(final, self[i])
+    for i in 1...self.size
+      final = yield(final,self[i])
     end
-    final
+    return final
   end
+
 end
 
 def multiply_els(arr)
-  arr.my_inject { |total, multiple| total * multiple }
+  arr.my_inject{|total, multiple| total * multiple}
 end
+
+
