@@ -51,7 +51,7 @@ module Enumerable
     count = 0
     i = 0
     while i < size
-      count +=1 if yield(self[i]== true)
+      count += 1 if yield(self[i] == true)
       i += 1
     end
     count
@@ -79,5 +79,7 @@ module Enumerable
 end
 
 def multiply_els(arr)
-  arr.my_inject{ | total, multiple | total * multiple}
+  arr.my_inject do |total, multiple| 
+    total * multiple 
+  end
 end
