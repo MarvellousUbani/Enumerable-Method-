@@ -34,7 +34,7 @@ module Enumerable
       pos += 1 if yield(self[i]) == true
       i += 1
     end
-    pos == self.size
+    pos == size
   end
 
   def my_none
@@ -44,7 +44,7 @@ module Enumerable
       pos += 1 if yield(self[i]) == false
       i += 1
     end
-    pos == self.size
+    pos == size
   end
 
   def my_count
@@ -82,6 +82,3 @@ end
 def multiply_els(arr)
   arr.my_inject{|total, multiple| total * multiple}
 end
-
-
-
