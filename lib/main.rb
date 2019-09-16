@@ -47,14 +47,24 @@ module Enumerable
     pos == size
   end
 
-  def my_count
-    count = 0
-    i = 0
-    while i < size
-      count += 1 if yield(self[i] == true)
-      i += 1
+  def my_count(arg = nil)
+    if arg != nil
+      count = 0
+      my_each do |x|
+        count += 1 if x == arg
+      end
+      count
     end
-    count
+
+    if block_given?
+      count = 0
+      my_each do |x|
+        count += 1 if yield(x) == true
+      end
+      return count  
+    end
+
+    return size if arg == nil
   end
 
   def my_map(&block)
@@ -83,3 +93,4 @@ def multiply_els(arr)
     total * multiple
   end
 end
+
