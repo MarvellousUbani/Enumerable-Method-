@@ -27,14 +27,55 @@ module Enumerable
     new_arr
   end
 
-  def my_all
-    pos = 0
-    i = 0
-    while i < size
-      pos += 1 if yield(self[i]) == true
-      i += 1
+  def my_all(arg = nil)
+    unless block_given?
+      if arg.nil?  
+        my_each do |x|
+          return false if x == false || x == nil
+        end
+        return true
+      end
     end
-    pos == size
+
+    unless arg.nil?
+      return [arg] == self ? true : false
+    end
+
+    if block_given?
+      pos = 0
+      i = 0
+      while i < size
+        pos += 1 if yield(self[i]) == true
+        i += 1
+      end
+      pos == size
+    end
+
+  end
+
+  def my_any(arg = nil)
+    unless block_given?
+      if arg.nil?
+        my_each do |x|
+          return false if x == false || x == nil
+        end
+        return true
+      end
+    end
+
+    unless arg.nil?
+      my_each do |x|
+        return true if x == arg
+      end
+      return false
+    end
+
+    if block_given?
+      my_each do |x|
+        return true if yield(x) == true
+      end
+      return false
+    end
   end
 
   def my_none
@@ -93,4 +134,8 @@ def multiply_els(arr)
     total * multiple
   end
 end
+
+
+
+
 
