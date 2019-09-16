@@ -29,17 +29,15 @@ module Enumerable
 
   def my_all(arg = nil)
     unless block_given?
-      if arg.nil?  
+      if arg.nil?
         my_each do |x|
-          return false if x == false || x == nil
+          return false if x == false || x.nil?
         end
         return true
       end
     end
 
-    unless arg.nil?
-      return [arg] == self ? true : false
-    end
+    return self == [arg] unless arg.nil?
 
     if block_given?
       pos = 0
@@ -50,14 +48,13 @@ module Enumerable
       end
       pos == size
     end
-
   end
 
   def my_any(arg = nil)
     unless block_given?
       if arg.nil?
         my_each do |x|
-          return false if x == false || x == nil
+          return false if x == false || x.nil?
         end
         return true
       end
