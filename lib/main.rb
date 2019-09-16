@@ -89,7 +89,7 @@ module Enumerable
   end
 
   def my_count(arg = nil)
-    if arg != nil
+    unless arg.nil?
       count = 0
       my_each do |x|
         count += 1 if x == arg
@@ -102,10 +102,10 @@ module Enumerable
       my_each do |x|
         count += 1 if yield(x) == true
       end
-      return count  
+      return count
     end
 
-    return size if arg == nil
+    return size if arg.nil?
   end
 
   def my_map(&block)
@@ -134,8 +134,3 @@ def multiply_els(arr)
     total * multiple
   end
 end
-
-
-
-
-
