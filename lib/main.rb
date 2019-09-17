@@ -29,11 +29,11 @@ module Enumerable
 
   def my_all(arg = nil)
     unless block_given? && arg.nil?
-        falsy = 0
-        my_each do |x|
-          falsy += 1 if x == false || x.nil?
-        end
-        return falsy == 0 ? true : false
+      falsy = 0
+      my_each do |x|
+        falsy += 1 if x == false || x.nil?
+      end
+      return falsy == 0
     end
 
     return self == [arg] unless arg.nil?
