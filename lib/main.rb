@@ -44,13 +44,11 @@ module Enumerable
   end
 
   def my_any(arg = nil)
-    unless block_given?
-      if arg.nil?
+    unless block_given? && arg.nil?
         my_each do |x|
           return false if x == false || x.nil?
         end
         return true
-      end
     end
 
     unless arg.nil?
