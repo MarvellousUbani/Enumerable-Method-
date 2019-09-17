@@ -30,7 +30,7 @@ module Enumerable
       if arg.nil?
         falsy = 0
         my_each do |x|
-          falsy += 1 unless x != false || !x.nil?
+          falsy += 1 if x == false || x.nil?
         end
         return falsy.zero?
       end
@@ -48,10 +48,11 @@ module Enumerable
   def my_any(arg = nil)
     unless block_given?
       if arg.nil?
+        falsy = 0
         my_each do |x|
-          return false if x == false || x.nil?
+          falsy += 1 if x == false || x.nil?
         end
-        return true
+        return falsy.zero?
       end
     end
 
