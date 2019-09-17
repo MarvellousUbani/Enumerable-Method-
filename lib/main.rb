@@ -28,23 +28,20 @@ module Enumerable
   end
 
   def my_all(arg = nil)
-    unless block_given?
-      if arg.nil?
+    unless block_given? && arg.nil?
+        falsy = 0
         my_each do |x|
-          return false if x == false || x.nil?
+          falsy += 1 if x == false || x.nil?
         end
-        return true
-      end
+        return falsy == 0 ? true : false
     end
 
     return self == [arg] unless arg.nil?
 
     if block_given?
       pos = 0
-      i = 0
-      while i < size
-        pos += 1 if yield(self[i]) == true
-        i += 1
+      my_each do |x|
+        pos += 1 if yield(x) == true
       end
       pos == size
     end
