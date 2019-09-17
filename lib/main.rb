@@ -30,7 +30,7 @@ module Enumerable
       if arg.nil?
         falsy = 0
         my_each do |x|
-          falsy += 1 unless x != false || x != nil
+          falsy += 1 unless x != false || !x.nil?
         end
         return falsy.zero?
       end
