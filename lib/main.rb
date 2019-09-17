@@ -29,9 +29,9 @@ module Enumerable
     unless block_given?
       if arg.nil?
         falsy = 0
-        my_each do |x|
-          falsy += 1 
-#           if x == false || x.nil?
+        my_each do |_x|
+          falsy += 1
+          #           if x == false || x.nil?
         end
         return falsy.zero?
       end
