@@ -46,14 +46,14 @@ module Enumerable
   end
 
   def my_any(arg = nil)
-#     unless block_given?
-      if arg.nil?
-        my_each do |x|
-          return false if x == false || x.nil?
-        end
-        return true
+    #     unless block_given?
+    if arg.nil?
+      my_each do |x|
+        return false if x == false || x.nil?
       end
-#     end
+      return true
+    end
+    #     end
 
     unless arg.nil?
       count = 0
