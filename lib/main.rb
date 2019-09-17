@@ -60,7 +60,7 @@ module Enumerable
       my_each do |x|
         count += 1 if x == arg
       end
-      return count > 0
+      return count.positive?
     end
 
     my_each do |x|
