@@ -26,7 +26,7 @@ module Enumerable
   end
 
   def my_all(arg = nil)
-    unless block_given?
+#     unless block_given?
       if arg.nil?
         falsy = 0
         my_each do |x|
@@ -34,7 +34,7 @@ module Enumerable
         end
         return falsy.zero?
       end
-    end
+#     end
 
     return self == [arg] unless arg.nil?
 
