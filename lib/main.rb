@@ -33,7 +33,7 @@ module Enumerable
       my_each do |x|
         falsy += 1 if x == false || x.nil?
       end
-      return falsy == 0
+      return falsy.zero?
     end
 
     return self == [arg] unless arg.nil?
