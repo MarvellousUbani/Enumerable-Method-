@@ -29,8 +29,8 @@ module Enumerable
     unless block_given?
       if arg.nil?
         falsy = 0
-        my_each do |_x|
-          falsy += 1 if x == false
+        my_each do |x|
+          falsy += 1 if !!x == false
         end
         return falsy.zero?
       end
@@ -45,12 +45,13 @@ module Enumerable
     pos == size
   end
 
+
   def my_any(arg = nil)
     unless block_given?
       if arg.nil?
         count = 0
         my_each do |x|
-          count += 1 if x != false
+          count += 1 if !!x != false
         end
         return count.positive?
       end
