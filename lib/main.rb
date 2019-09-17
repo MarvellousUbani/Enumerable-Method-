@@ -46,15 +46,15 @@ module Enumerable
   end
 
   def my_any(arg = nil)
-#     unless block_given?
-      if arg.nil?
-        count = 0
-        my_each do |x|
-          count += 1 if x != false
-        end
-        return count.positive?
+    #     unless block_given?
+    if arg.nil?
+      count = 0
+      my_each do |x|
+        count += 1 if x != false
       end
-#     end
+      return count.positive?
+    end
+    #     end
 
     unless arg.nil?
       count = 0
