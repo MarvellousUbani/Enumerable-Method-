@@ -48,11 +48,11 @@ module Enumerable
   def my_any(arg = nil)
     unless block_given?
       if arg.nil?
-        falsy = 0
+        count = 0
         my_each do |x|
-          falsy += 1 if x == false || x.nil?
+          count += 1 if x != false && x != nil
         end
-        return falsy.zero?
+        return count.positive?
       end
     end
 
