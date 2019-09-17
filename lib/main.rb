@@ -35,14 +35,11 @@ module Enumerable
     end
 
     return self == [arg] unless arg.nil?
-
-    if block_given?
       pos = 0
       my_each do |x|
         pos += 1 if yield(x) == true
       end
       pos == size
-    end
   end
 
   def my_any(arg = nil)
@@ -61,13 +58,11 @@ module Enumerable
       end
       return false
     end
-
-    if block_given?
+    
       my_each do |x|
         return true if yield(x) == true
       end
       return false
-    end
   end
 
   def my_none
