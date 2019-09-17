@@ -19,10 +19,8 @@ module Enumerable
 
   def my_select
     new_arr = []
-    i = 0
-    while i < size
-      new_arr << self[i] if yield(self[i]) == true
-      i += 1
+    my_each do |x|
+      new_arr << x if yield(x) == true
     end
     new_arr
   end
@@ -74,10 +72,8 @@ module Enumerable
 
   def my_none
     pos = 0
-    i = 0
-    while i < size
-      pos += 1 if yield(self[i]) == false
-      i += 1
+    my_each do |x|
+      pos += 1 if yield(x) == false
     end
     pos == size
   end
@@ -104,10 +100,8 @@ module Enumerable
 
   def my_map(&block)
     new_arr = []
-    i = 0
-    while i < size
-      new_arr << block.call(self[i])
-      i += 1
+    my_each do |x|
+      new_arr << block.call(x)
     end
     new_arr
   end
