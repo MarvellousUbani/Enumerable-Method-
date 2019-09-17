@@ -45,7 +45,6 @@ module Enumerable
     pos == size
   end
 
-
   def my_any(arg = nil)
     unless block_given?
       if arg.nil?
