@@ -27,12 +27,13 @@ module Enumerable
 
   def my_all(arg = nil)
     unless block_given?
-        falsy = 0
-        my_each do |x|
-          falsy += 1 if x == false || x.nil?
-        end
-        return falsy.zero? if arg.nil?
-        return self == [arg]
+      falsy = 0
+      my_each do |x|
+        falsy += 1 if x == false || x.nil?
+      end
+      return falsy.zero? if arg.nil?
+
+      return self == [arg]
     end
 
     pos = 0
@@ -103,12 +104,13 @@ module Enumerable
     new_arr
   end
 
-  def my_inject(param=nil)
+  def my_inject(param = nil)
     final = self[0]
     drop(1).my_each do |x|
       final = yield(final, x)
     end
     return yield(final, param) unless param.nil?
+
     final
   end
 end
