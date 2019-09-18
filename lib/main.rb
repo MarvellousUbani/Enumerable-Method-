@@ -30,7 +30,7 @@ module Enumerable
       if arg.nil?
         falsy = 0
         my_each do |x|
-          falsy += 1 if x == false || x == nil
+          falsy += 1 if x == false || x.nil?
         end
         return falsy.zero?
       else
@@ -46,15 +46,15 @@ module Enumerable
   end
 
   def my_any(arg = nil)
-#     unless block_given?
-      if arg.nil?
-        count = 0
-        my_each do |x|
-          count += 1 if x != false
-        end
-        return count.positive?
+    #     unless block_given?
+    if arg.nil?
+      count = 0
+      my_each do |x|
+        count += 1 if x != false
       end
-#     end
+      return count.positive?
+    end
+    #     end
 
     unless arg.nil?
       count = 0
@@ -106,7 +106,7 @@ module Enumerable
     new_arr
   end
 
-  def my_inject(param=nil)
+  def my_inject(param = nil)
     final = self[0]
     my_each do |x|
       final = yield(final, x)
