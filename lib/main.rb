@@ -74,8 +74,9 @@ module Enumerable
           num += 1 if x.match(arg)
         end
         return num == size
+      elsif arg.class == Integer
+        return self == [arg]
       end
-      return self == [arg]
       return falsy.zero?
 
     end
