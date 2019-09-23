@@ -38,22 +38,19 @@ module Enumerable
         my_each do |x|
           count << true if yield(x) == true
         end
-      end
-      count = my_select { |x| x != false && !x.nil? }
-    end
-
-    unless arg.nil?
-      if arg.class == Class
-        count = my_select { |x| x.is_a?(arg) }
-      elsif arg.class == Regexp
-
-        my_each do |x|
-          return true if x.match(arg)
-        end
       else
-        count = my_select { |x| x == arg }
+        count = my_select { |x| x != false && !x.nil? }
       end
+    elsif arg.class == Class
+        count = my_select { |x| x.is_a?(arg) }
+    elsif arg.class == Regexp
+      my_each do |x|
+        return true if x.match(arg)
+      end
+    else
+      count = my_select { |x| x == arg }
     end
+    p count
     count.size.positive?
   end
 
