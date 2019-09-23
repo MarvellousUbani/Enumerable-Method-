@@ -59,24 +59,24 @@ module Enumerable
 
   def my_all?(arg = nil)
     unless block_given?
-        falsy = 0
-        if arg.nil? 
-          my_each do |x|
-            falsy += 1 if x == false || x == nil
-          end
-        elsif arg.class == Class
-            my_each do |x|
-              falsy += 1 if !x.is_a?(arg)
-            end
-        elsif arg.class == Regexp
-            num = 0
-            my_each do |x|
-              num += 1 if x.match(arg)
-            end
-            return num == size
+      falsy = 0
+      if arg.nil?
+        my_each do |x|
+          falsy += 1 if x == false || x.nil?
         end
-        return falsy.zero?
-        return self == [arg] 
+      elsif arg.class == Class
+        my_each do |x|
+          falsy += 1 unless x.is_a?(arg)
+        end
+      elsif arg.class == Regexp
+        num = 0
+        my_each do |x|
+          num += 1 if x.match(arg)
+        end
+        return num == size
+      end
+      return falsy.zero?
+      return self == [arg]
     end
 
     pos = 0
