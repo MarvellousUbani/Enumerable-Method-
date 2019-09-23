@@ -42,7 +42,7 @@ module Enumerable
         count = my_select { |x| x != false && !x.nil? }
       end
     elsif arg.class == Class
-        count = my_select { |x| x.is_a?(arg) }
+      count = my_select { |x| x.is_a?(arg) }
     elsif arg.class == Regexp
       my_each do |x|
         return true if x.match(arg)
