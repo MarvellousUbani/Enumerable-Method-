@@ -75,8 +75,9 @@ module Enumerable
         end
         return num == size
       end
-      return falsy.zero?
       return self == [arg]
+      return falsy.zero?
+      
     end
 
     pos = 0
@@ -92,18 +93,16 @@ module Enumerable
       my_each do |x|
         count << true if yield(x) == true
       end
-    else
-      if arg.nil?
+    elsif arg.nil?
         count = my_select { |x| !x.nil? && x != false }
-      elsif arg.class == Class
+    elsif arg.class == Class
         count = my_select { |x| x.is_a?(arg) }
-      elsif arg.class == Regexp
+    elsif arg.class == Regexp
         num = 0
         my_each do |x|
           num += 1 if x.match(arg)
         end
         return num.zero?
-      end
     end
 
     count.size.zero?
