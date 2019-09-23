@@ -141,13 +141,11 @@ module Enumerable
     final = res[0]
 
     if params.empty?
-      # do normal block and conversion from range stuff
       drop(1).my_each do |x|
         final = yield(final, x)
       end
       final
     else
-      # if its not empty, it either has an integer or a block
       symbol = ''
       number = ''
 
