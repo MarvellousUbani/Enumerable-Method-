@@ -78,7 +78,6 @@ module Enumerable
         return self == [arg]
       end
       return falsy.zero?
-
     end
 
     pos = 0
