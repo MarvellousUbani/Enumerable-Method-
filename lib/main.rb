@@ -143,7 +143,6 @@ module Enumerable
     symbol_obj = %i[+ - * /]
     res = to_a
     final = res[0]
-    x = 0
 
     if params.empty?
       # do normal block and conversion from range stuff
