@@ -88,25 +88,25 @@ module Enumerable
 
   def my_none?(arg = nil)
     count = []
-    unless block_given?
-      if arg.nil?
-        count = my_select {|x| x != nil && x != false}
-      elsif arg.class == Class
-          count = my_select{|x| x.is_a?(arg) }
-      elsif arg.class == Regexp
-          num = 0
-          my_each do |x|
-            num += 1 if x.match(arg)
-          end
-          return num.zero?
-      end
-    else
+    if block_given?
       my_each do |x|
         count << true if yield(x) == true
       end
+    else
+      if arg.nil?
+        count = my_select { |x| !x.nil? && x != false }
+      elsif arg.class == Class
+        count = my_select { |x| x.is_a?(arg) }
+      elsif arg.class == Regexp
+        num = 0
+        my_each do |x|
+          num += 1 if x.match(arg)
+        end
+        return num.zero?
+      end
     end
 
-    return count.size.zero?
+    count.size.zero?
   end
 
   def my_count(arg = nil)
