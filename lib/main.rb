@@ -111,7 +111,7 @@ module Enumerable
       my_each do |x|
         count += 1 if x == arg
       end
-      count
+      return count
     end
 
     if block_given?
@@ -119,7 +119,7 @@ module Enumerable
       my_each do |x|
         count += 1 if yield(x) == true
       end
-      count
+      return count
     end
 
     size if arg.nil?
