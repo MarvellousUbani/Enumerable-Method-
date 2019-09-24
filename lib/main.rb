@@ -50,7 +50,6 @@ module Enumerable
     else
       count = my_select { |x| x == arg }
     end
-    p count
     count.size.positive?
   end
 
